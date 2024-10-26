@@ -15,7 +15,13 @@ startBtn.addEventListener("mouseenter",(e)=>{
 startBtn.addEventListener("mousemove",(event)=>{
     document.getElementById("status").innerHTML="Try not to hit the barriers!";
 
-    
+    cursor={
+        x: event.clientX,
+        y: event.clientY,
+    }
+
+    startBtn.style.left = (cursor.x+offset[0]) + "px";
+    startBtn.style.top = (cursor.y+offset[1]) + "px";
 
 })
 
