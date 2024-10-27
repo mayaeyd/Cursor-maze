@@ -1,9 +1,6 @@
 // // // y start button min: 330 max : 360
 // // // x start button min: 140 max : 180
 
-var startBtn= document.getElementById("start");
-var cursor;
-offset=[0,0]
 
 startBtn.addEventListener("mouseenter",(e)=>{
     offset=[
@@ -23,6 +20,20 @@ startBtn.addEventListener("mousemove",(event)=>{
     startBtn.style.left = (cursor.x+offset[0]) + "px";
     startBtn.style.top = (cursor.y+offset[1]) + "px";
 
-})
+    let startRect = startBtn.getBoundingClientRect();
+    let endRect = endBtn.getBoundingClientRect();
+    let boundaryRect;
 
+    boundaries.forEach(boundary => {
+        boundaryRect = boundary.getBoundingClientRect();
+        if (checkCollision(startRect, boundaryRect)) {
+            loseGame();
+        }  
+    });
+
+    if(checkCollision(startRect,endRect)){
+        winGame();
+    }  
+
+});
 
